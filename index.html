@@ -19,40 +19,93 @@
 <script src="scripts/jquery.tipsy.js"></script>
 
 
-<p style="width: 1000px; height: 15 px; text-align: left; font-size: 14px;">&nbsp; &nbsp; <b>Optimum Lighting Decisions : </b> Helping people make optimized choices.</p>
+<p style="margin-left:-8px; width: 1000px; text-align: left; font-size: 14px;">&nbsp; &nbsp; <b>Optimum Lighting Decisions : </b> Helping people make optimized choices.</p>
+    <b><p style=" margin-left:10px; height: 10px" id="roomselected"></p><b>
 
-<div id="container">
 
-<div id = "bulbtype" style="float: left; margin-right: 30px ; margin-left: 18px">
-        <B> Select the Bulb type </B> <br><br>
-        <input type="radio" name="bulb" value="inc" checked> Incandescent Tungsten<br><br>
-        <input type="radio" name="bulb" value="cfl"> CFL<br><br>
-        <input type="radio" name="bulb" value="led"> LED
-</div>
 
-<div id = "dimensions" style="float: left; margin-right: 30px ">
-    <b>Enter the dimensions of the room:</b> <br><br>
-    Length:
-    <input type="number" min="0" name="length"  style="margin-left: 11px"><br><br>
-    Breadth:
-    <input type="number" min="0" name="breadth" style="margin-left: 4px"><br><br>
-    Height:
-    <input type="number" min="0" name="height"  style="margin-left: 12px"><br><br>
-</div>
+<div id="container" style="float: left; height: 750px">
 
-<div id = "power" style="float: left">
-    <b>Power of the Bulb:</b> <br><br>
-    <select id = "power" style="width: 200px"></select>
-</div>
+    <div id = "bulbtype" style="margin-left: 10px">
+            <B> Select the Bulb type </B> <br><br>
+            <label title="Tungsten Bulb" class="incg1" >
+                <input type="radio" name="bulb" class="bulb" value="inc" checked><img src="css/images/incg.png" id="incg" style="height: 40px;width: 40px">
+            </label>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+            <label title="CFL Bulb" class="cflg1" >
+                <input type="radio" name="bulb" class="bulb" value="cfl"><img src="css/images/cflg.png" id="cflg" style="height: 40px;width: 40px">
+            </label>
+
+            <label title="LED Bulb" class="ledg1">
+                <input type="radio" name="bulb" class="bulb" value="led"><img src="css/images/ledg.png" class="ledg" id="ledg" style="height: 40px;width: 40px">
+            </label>
+    <br>
+    <br>
+    <br>
     </div>
-<p id="intro" style="width: 1000px; height: 15 px; text-align: left; font-size: 14px;">&nbsp; &nbsp; <b>Please select the room to begin:</b></p>
+
+    <!--style="float: left; margin-right: 30px ; margin-left: 18px"-->
+    <!--style="float: left; margin-right: 30px "-->
+
+    <div id = "dimensions" style="margin-left: 10px">
+        <b>Enter the Room dimensions in meters:</b> <br><br>
+        <input type="number" class="numberbox" placeholder="Length" min="0"  id="length" style=" width: 60px">
+        <input type="number" class="numberbox" placeholder="Breadth" min="0"  id="breadth" style="margin-left: 5px; width: 60px">
+        <br>
+        <br>
+    </div>
+
+    <div id = "power" style="margin-left: 10px" >
+        <b>Power:</b><br><br>
+        <div id = "slider1" style="width: 280px;float: left; margin-right: 30px"></div>
+        <br>
+        <br>
+        <br>
+    </div>
+
+
+    <div id = "calculate" style="float: left; margin-left: 10px">
+        <!-- <form name="myform">
+        <input type="submit"  name="calculate" value="Light up my Room!" formaction="Javascript:calculate()"  >
+            </form> -->
+            <button onclick="calculate()">Light up my Room!</button>
+    </div>
+
+        <br>
+
+        <p id="demo"></p>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+</div>
+
+
+<div id="container2" style="height: 450px ;">
+
+    <div id="bedroom" style="float: left; height:450px;  width: 450px; background-image: url(css/images/bedroom.png)">
+    </div>
+
+    <div id="dining" style="float: left; height:450px; width: 450px; background-image: url(css/images/dining.png)">
+       <!--  <img src=" css/images/dining.png"> -->
+    </div>
+</div>
+
+<div id="container3" style="height: 300px; float: left;">
+    <div id="bathroom" style="height:300px; width: 300px; float: left; background-image: url(css/images/bathroom.png)">
+    </div>
+
+    <div id="kitchen" style="float: left; height:300px; width: 300px; background-image: url(css/images/kitchen.png)">
+    </div>
+
+    <div id="living" style="float: left ;height:300px; width: 300px; background-image: url(css/images/living.png)">
+    </div>
+
+</div>
+
+
 <script src="scripts/main-script.js"></script>
 
 <!--<div id = "filters" style="height: 50px" class="filter">-->
@@ -65,7 +118,7 @@
 <!--<br><br>-->
 <!--</div>-->
 <!--<div id = "chart"></div>-->
-
+<!--<p id="intro" style="width: 1000px; height: 15 px; text-align: left; font-size: 14px;">&nbsp; &nbsp; <b>Please select the room to begin:</b></p>-->
 
 <br><br>
 </body>

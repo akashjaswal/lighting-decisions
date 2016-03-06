@@ -3,6 +3,77 @@ body {
   color: #7f8c8d;
 }
 
+/*input[type=submit] {*/
+
+    /*background:url('images/led.png');*/
+
+/*}*/
+
+.numberbox {
+    border: 1px solid #c4c4c4;
+    height: 25px;
+    width: 275px;
+    font-size: 13px;
+    padding: 4px 4px 4px 4px;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    box-shadow: 0px 0px 8px #d9d9d9;
+    -moz-box-shadow: 0px 0px 8px #d9d9d9;
+    -webkit-box-shadow: 0px 0px 8px #d9d9d9;
+}
+
+.numberbox:focus {
+    outline: none;
+    border: 1px solid #7bc1f7;
+    box-shadow: 0px 0px 8px #7bc1f7;
+    -moz-box-shadow: 0px 0px 8px #7bc1f7;
+    -webkit-box-shadow: 0px 0px 8px #7bc1f7;
+}
+
+label > input{
+    visibility: hidden;
+    position: absolute;
+}
+label > input + img{
+    cursor:pointer;
+
+}
+label.ledg1 > input:checked + img{
+    content: url('images/led.png');
+
+}
+
+label.incg1 > input:checked + img{
+    content: url('images/inc.png');
+
+}
+
+label.cflg1 > input:checked + img{
+    content: url('images/cfl.png');
+
+}
+
+#incg:hover {
+    content: url('images/inc.png');
+}
+
+#cflg:hover {
+    content: url('images/cfl.png');
+}
+
+#ledg:hover {
+    content: url('images/led.png');
+}
+
+#ledg:checked + img{
+    background-image: url("images/led.png");
+}
+
+.incg1 {
+    font: normal 14px Arial, Helvetica, sans-serif;
+}
+
 .axis path,
 .axis line {
     fill: none;

@@ -7,16 +7,30 @@
 
 <body>
 
-<div id="bulbs"></div>
+<div id="bulbs" style="margin-top: 30px; margin-left: 50px; float: left;" ></div>
+<div id="bulbs2" style="margin-top: 30px; margin-left: 50px; float: right;"></div>
 <script src="scripts/d3.min.js"></script>
 <script type="text/javascript">	
 
-var width = 400,
-    height = 400;
 
-no_of_bulbs = [40];
+var width = 500,
+    height = 500;
+
+no_of_bulbs = [18];
 
 var svg = d3.select("#bulbs").selectAll("svg")
+    .data(no_of_bulbs)
+  	.enter().append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+svg.append("g")
+    .attr("transform", "translate(" + [width / 2, height / 2] + ")")
+    .each(function(d) {
+      d3.select(this).call(bulb_placement, primeFactors(d), width / 2);
+    });
+
+    var svg = d3.select("#bulbs2").selectAll("svg")
     .data(no_of_bulbs)
   	.enter().append("svg")
     .attr("width", width)
