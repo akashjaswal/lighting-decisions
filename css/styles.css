@@ -3,11 +3,8 @@ body {
   color: #7f8c8d;
 }
 
-/*input[type=submit] {*/
 
-    /*background:url('images/led.png');*/
 
-/*}*/
 
 .numberbox {
     border: 1px solid #c4c4c4;
@@ -37,8 +34,56 @@ label > input{
 }
 label > input + img{
     cursor:pointer;
+}
+
+.submitcss {
+    -webkit-box-shadow:rgba(0,0,0,0.2) 0 1px 0 0;
+    -moz-box-shadow:rgba(0,0,0,0.2) 0 1px 0 0;
+    box-shadow:rgba(0,0,0,0.2) 0 1px 0 0;
+    border-bottom-color:#333;
+    border:1px solid #1f1f1f;
+    background-color: rgba(158, 164, 159, 0.54);
+    border-radius:5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    color: #767676;
+    font-family:'Verdana',Arial,sans-serif;
+    font-size:14px;
+    text-shadow: #999e9a 0 1px 0;
+    padding:5px
+}
+
+#energy_p,  #cost_p, #environment_p, #custom_p  {
+    opacity: 0.2;
+}
+
+
+#energy_p:hover, #cost_p:hover, #environment_p:hover, #custom_p:hover   {
+    opacity: 1.0;
+}
+
+
+label.environment1 > input:checked + #environment_p {
+    opacity: 1.0;
 
 }
+
+label.cost1 > input:checked + #cost_p  {
+    opacity: 1.0;
+
+}
+
+label.energy1 > input:checked + #energy_p {
+    opacity: 1.0;
+
+}
+
+label.custom1 > input:checked + #custom_p {
+    opacity: 1.0;
+
+}
+
+
 label.ledg1 > input:checked + img{
     content: url('images/led.png');
 
@@ -52,6 +97,11 @@ label.incg1 > input:checked + img{
 label.cflg1 > input:checked + img{
     content: url('images/cfl.png');
 
+}
+
+
+#dining:hover{
+    background-image: url(images/dining.png);
 }
 
 #incg:hover {
@@ -136,4 +186,51 @@ label.cflg1 > input:checked + img{
   clear:left;
   height:25px;
   margin: 20px;
+}
+
+
+.onoffswitch {
+    position: relative; width: 140px;
+    -webkit-user-select:text; -moz-user-select:text; -ms-user-select: text;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #999999; border-radius: 20px;
+}
+.onoffswitch-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
+    font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+    content: "New House";
+    padding-left: 10px;
+    background-color: #F5D76E; color: #FFFFFF;
+}
+.onoffswitch-inner:after {
+    content: "Existing Setup";
+    padding-right: 10px;
+    background-color: #EEEEEE; color: #999999;
+    text-align: right;
+}
+.onoffswitch-switch {
+    display: block; width: 18px; margin: 6px;
+    background: #FFFFFF;
+    position: absolute; top: 0; bottom: 0;
+    right: 105px;
+    border: 2px solid #999999; border-radius: 20px;
+    transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; 
 }

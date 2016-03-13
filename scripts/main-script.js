@@ -8,60 +8,118 @@ var no_of_bulbs = [];
 var svg, selected_room;
 var width;
 var height;
+var e=200;
+var lighting_type = "New House";
+
+// var controller = new ScrollMagic.Controller();
+// var scene = new ScrollMagic.Scene();
+
+
+// // create a scene
+// new ScrollMagic.Scene({
+//         duration: 500,    // the scene should last for a scroll distance of 100px
+//         offset: 0        // start this scene after scrolling for 50px
+//     })
+//     .setPin("#container") // pins the element for the the scene's duration
+//     .addTo(controller); // assign the scene to the controller
+
+// new ScrollMagic.Scene({
+//         duration: 500,    // the scene should last for a scroll distance of 100px
+//         offset: 0        // start this scene after scrolling for 50px
+//     })
+//     .setPin("#container2") // pins the element for the the scene's duration
+//     .addTo(controller);
+
+
 
 $("#bedroom").click(
     function(){
+        //$(this).unbind("mouseenter mouseleave");
+        $("#bedroom").fadeTo("fast",1);
+        $("#living").fadeTo("fast",0.2);
+        $("#kitchen").fadeTo("fast",0.2);
+        $("#bathroom").fadeTo("fast",0.2);
+        $("#dining").fadeTo("fast",0.2);
         console.log("Bedroom selected");
         $("#roomselected").text("Bedroom");
         selected_room = "#bedroom";
-        width = 450;
-        height = 450;
+        width = 375;
+        height = 375;
+        e=150;
 
     }
 );
 
 $("#living").click(
     function(){
+        //$(this).unbind("mouseenter mouseleave");
+        $("#living").fadeTo("fast",1);
+        $("#bedroom").fadeTo("fast",0.2);
+        $("#kitchen").fadeTo("fast",0.2);
+        $("#bathroom").fadeTo("fast",0.2);
+        $("#dining").fadeTo("fast",0.2);
         console.log("Living selected");
         $("#roomselected").text("Living");
         selected_room = "#living";
-        width = 300;
-        height = 300;
-
-    d3.selectAll("svg").remove();
+        width = 250;
+        height = 250;
+        e=150;
     }
 );
 
 $("#kitchen").click(
     function(){
+        //$(this).unbind("mouseenter mouseleave");
+        $("#kitchen").fadeTo("fast",1);
+        $("#living").fadeTo("fast",0.2);
+        $("#bedroom").fadeTo("fast",0.2);
+        $("#bathroom").fadeTo("fast",0.2);
+        $("#dining").fadeTo("fast",0.2);
         console.log("Kitchen selected");
         $("#roomselected").text("Kitchen");
         selected_room = "#kitchen";
-        width = 300;
-        height = 300;
+        width = 250;
+        height = 250;
+        e=250;
     }
 );
 
 $("#bathroom").click(
     function(){
+        //$(this).unbind("mouseenter mouseleave");
+        $("#bathroom").fadeTo("fast",1);
+        $("#living").fadeTo("fast",0.2);
+        $("#kitchen").fadeTo("fast",0.2);
+        $("#bedroom").fadeTo("fast",0.2);
+        $("#dining").fadeTo("fast",0.2);
         console.log("Bathroom selected");
         $("#roomselected").text("Bathroom");
         selected_room = "#bathroom";
-        width = 300;
-        height = 300;
+        width = 250;
+        height = 250;
+        e=200;
     }
 );
 
+
 $("#dining").click(
     function(){
+        //$(this).unbind("mouseenter mouseleave");
+        $("#dining").fadeTo("fast",1);
+        $("#living").fadeTo("fast",0.2);
+        $("#kitchen").fadeTo("fast",0.2);
+        $("#bathroom").fadeTo("fast",0.2);
+        $("#bedroom").fadeTo("fast",0.2);
         console.log("Dining selected");
         $("#roomselected").text("Dining");
         selected_room = "#dining";
-        width = 450;
-        height = 450;
+        width = 375;
+        height = 375;
         d3.selectAll("svg").remove();
+        e=150;
     }
 );
+
 
 //initial slider
 $( "#slider1" ).slider({
@@ -96,11 +154,31 @@ $( "#slider1" ).slider({
 });
 //end of initial slider
 
+$('.onoffswitch').change(function()
+{
+    if($("#myonoffswitch").is(':checked'))
+        lighting_type = "New House";  // checked
+    else
+        lighting_type = "Existing Setup";
+    console.log(lighting_type);
+
+});
+
+$(".pref").change(function()
+{
+    var preference =$("input[type='radio'][name='pref']:checked").val();
+    $("#select_preference").text(preference);
+})
+
+
+
 //Selecting and saving the value of the radio button
 var bulb=$("input[type='radio'][name='bulb']:checked").val();
 //console.log(bulb);
 $('input').on('change', function() {
     bulb=($("input[name='bulb']:checked").val());
+    var bulb_type = $("input[type='radio'][name='bulb']:checked").val();
+    $("#bulb_type").text(bulb_type);
 });
 //End of radio
 
@@ -229,8 +307,17 @@ $( ".bulb" ).change(function()
 function calculate()
 {
     var area=len*brd;
-    n=Math.ceil((150*area)/(pwr*eff*0.5*0.8));
+    n=Math.ceil((e*area)/(pwr*eff*0.5*0.8));
     console.log(n);
+
+    x = primeFactors(n);
+    console.log(x);
+
+    if (n % 2 == 1 & n != 3)
+    {
+        n += 1;
+    }
+
     document.getElementById("demo").innerHTML=n;
 
     no_of_bulbs[0] = n;
@@ -276,12 +363,13 @@ function bulb_placement(selection, factors, size) {
     radialGradient.append("stop")
         .attr("offset", "100%")
         .attr("stop-color", "#fff");
-
       if (factors.length) {
         
         // Retrieving factors one by one from the prime factorization array
         var n = factors.pop();
         
+
+
         //  calculating the adjustment in angle based on the factor 
         if (n === 4){
             offset = 45; // 45 degrees will place the 4 bulbs in the 4 corners of a square
@@ -318,13 +406,17 @@ function primeFactors(n) {
   var factors = [],
       f;
   while (n > 1) {
+
     factors.push(f = factor(n)); // Calling the function for finding the factors
     n /= f;
   }
+  console.log(factors);
   return factors;
 }
 
 function factor(n) {
+
+
   // Preserving the combination of 4 bulbs
   if (n % 4 === 0) return 4;
 
@@ -334,4 +426,17 @@ function factor(n) {
   
   return n;
 }
+
+
+// init controller
+var controller = new ScrollMagic.Controller();
+
+// create a scene
+new ScrollMagic.Scene({
+        duration: 500,    // the scene should last for a scroll distance of 100px
+        offset: 0        // start this scene after scrolling for 50px
+    })
+    .setPin("#container") // pins the element for the the scene's duration
+    .addTo(controller); // assign the scene to the controller
+
 

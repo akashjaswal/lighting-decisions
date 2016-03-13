@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
+<link rel="shortcut icon" id="logo" href="css/images/logo.png" style="height: auto;width: auto">
 <link rel="stylesheet" href="css/styles.css">
 <link rel="stylesheet" href="css/chosen.min.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
@@ -17,27 +18,64 @@
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script src="scripts/selectToUISlider.jQuery.js"></script>
 <script src="scripts/jquery.tipsy.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script>
 
-
-<p style="margin-left:-8px; width: 1000px; text-align: left; font-size: 14px;">&nbsp; &nbsp; <b>Optimum Lighting Decisions : </b> Helping people make optimized choices.</p>
+<p style="margin-left:-8px; width: 1000px; text-align: left; font-size: 14px;">&nbsp; &nbsp; <b>Optimum Lighting Decisions : </b> Simplifying smart decision making to light up houses</p>
     <b><p style=" margin-left:10px; height: 10px" id="roomselected"></p><b>
 
 
+<div id="container" style="float: left; height: 750px; margin-left: 10px">
 
-<div id="container" style="float: left; height: 750px">
+    <div class="onoffswitch">
+        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+        <label class="onoffswitch-label" for="myonoffswitch">
+            <span class="onoffswitch-inner"></span>
+            <span class="onoffswitch-switch"></span>
+        </label>
+    </div>
+    <br><br>
+
+    <!-- <a href=”https://www.amazon.com/s?url=search-alias%3Daps&field-keywords=floor+lamps” target="_new" >Buy Floor Lamps</a> -->
+
+    <a href="#" onclick="window.open('https://www.amazon.com/s?url=search-alias%3Daps&field-keywords=floor+lamps','_blank')">Buy Floor Lamps</a>
+     <div id = "user-preference" style="margin-left: 10px">
+            <b> Preference: </b> 
+            <label id="select_preference">Low Power Consumption</label> <br><br>
+            <label title="Energy Efficient" class="energy1">
+                <input type="radio" name="pref" class="pref" value="Low Power Consumption" checked><img src="css/images/power1.png" id="energy_p" style="height: 51px; width: 51px;">
+            </label>
+
+            <label title="Cost Efficient" class="cost1" >
+                <input type="radio" name="pref" class="pref" value="Cost Saving"><img src="css/images/cost.png" id="cost_p" style="height: 50px;width: 50px;">
+            </label>
+
+            <label title="Eco Friendly" class="environment1">
+                <input type="radio" name="pref" class="pref" value="Eco Friendly"><img src="css/images/environment.png" class="environment" id="environment_p" style="height: 50px;width: 50px;">
+            </label>
+            <label title="Custom" class="custom1">
+                <input type="radio" name="pref" class="pref" value="Custom Setting"><img src="css/images/custom.png" class="custom_s" id="custom_p" style="height: 50px;width: 50px;">
+            </label>
+    <br>
+    <br>
+    <br>
+    </div>
+
 
     <div id = "bulbtype" style="margin-left: 10px">
-            <B> Select the Bulb type </B> <br><br>
+            <B>Bulb:</B> 
+            <label id="bulb_type">Incandescent</label><br><br>
             <label title="Tungsten Bulb" class="incg1" >
-                <input type="radio" name="bulb" class="bulb" value="inc" checked><img src="css/images/incg.png" id="incg" style="height: 40px;width: 40px">
+                <input type="radio" name="bulb" class="bulb" value="Incandescent" checked><img src="css/images/incg.png" id="incg" style="height: 50px;width: 50px;">
             </label>
 
             <label title="CFL Bulb" class="cflg1" >
-                <input type="radio" name="bulb" class="bulb" value="cfl"><img src="css/images/cflg.png" id="cflg" style="height: 40px;width: 40px">
+                <input type="radio" name="bulb" class="bulb" value="CFL"><img src="css/images/cflg.png" id="cflg" style="height: 50px;width: 50px">
             </label>
 
             <label title="LED Bulb" class="ledg1">
-                <input type="radio" name="bulb" class="bulb" value="led"><img src="css/images/ledg.png" class="ledg" id="ledg" style="height: 40px;width: 40px">
+                <input type="radio" name="bulb" class="bulb" value="LED"><img src="css/images/ledg.png" class="ledg" id="ledg" style="height: 50px;width: 50px">
             </label>
     <br>
     <br>
@@ -49,10 +87,11 @@
 
     <div id = "dimensions" style="margin-left: 10px">
         <b>Enter the Room dimensions in meters:</b> <br><br>
-        <input type="number" class="numberbox" placeholder="Length" min="0"  id="length" style=" width: 60px">
-        <input type="number" class="numberbox" placeholder="Breadth" min="0"  id="breadth" style="margin-left: 5px; width: 60px">
+        <input type="number" class="numberbox" placeholder="Length" min="0"  id="length" style=" width: 70px">
+        <input type="number" class="numberbox" placeholder="Breadth" min="0"  id="breadth" style="margin-left: 5px; width: 70px">
         <br>
         <br>
+
     </div>
 
     <div id = "power" style="margin-left: 10px" >
@@ -65,10 +104,9 @@
 
 
     <div id = "calculate" style="float: left; margin-left: 10px">
-        <!-- <form name="myform">
-        <input type="submit"  name="calculate" value="Light up my Room!" formaction="Javascript:calculate()"  >
-            </form> -->
-            <button onclick="calculate()">Light up my Room!</button>
+        <form name="myform">
+        <input type="submit" class="submitcss" style="width: 200px" name="calculate" value="Light up my Room!" formaction="Javascript:calculate()">
+            </form>
     </div>
 
         <br>
@@ -83,24 +121,23 @@
 </div>
 
 
-<div id="container2" style="height: 450px ;">
+<div id="container2" style="height: 375px ;">
 
-    <div id="bedroom" style="float: left; height:450px;  width: 450px; background-image: url(css/images/bedroom.png)">
+    <div id="bedroom" style="float: left; height:375px; width: 375px; background-image: url(css/images/bedroom.png)">
     </div>
 
-    <div id="dining" style="float: left; height:450px; width: 450px; background-image: url(css/images/dining.png)">
-       <!--  <img src=" css/images/dining.png"> -->
+    <div id="dining" class="dd" style="float: left; height:375px; width: 375px; background-image: url(css/images/dining.png)">
     </div>
 </div>
 
-<div id="container3" style="height: 300px; float: left;">
-    <div id="bathroom" style="height:300px; width: 300px; float: left; background-image: url(css/images/bathroom.png)">
+<div id="container3" style="height: 250px; float: left;">
+    <div id="bathroom" style="height:250px; width: 250px; float: left; background-image: url(css/images/bathroom.png)">
     </div>
 
-    <div id="kitchen" style="float: left; height:300px; width: 300px; background-image: url(css/images/kitchen.png)">
+    <div id="kitchen" style="float: left; height:250px; width: 250px; background-image: url(css/images/kitchen.png)">
     </div>
 
-    <div id="living" style="float: left ;height:300px; width: 300px; background-image: url(css/images/living.png)">
+    <div id="living" style="float: left ;height:250px; width: 250px; background-image: url(css/images/living.png)">
     </div>
 
 </div>
