@@ -229,7 +229,6 @@ $('input').on('change', function() {
 
 //End of text box
 
-
 calculate();
 
 function calculate()
@@ -348,6 +347,8 @@ function factor(n) {
   return n;
 }
 
+// creating radial interactions to show the number of bulbs, cost of bulbs and operating cost
+
 function draw(b,cost,y){   
 
     var div1=d3.select(document.getElementById('div1'));
@@ -404,6 +405,7 @@ function radialProgress(parent) {
         _minValue = 0,
         _maxValue = 100;
 
+    // Initalizing the arc values to fill the dials
     var  _currentArc= 0, _currentArc2= 0, _currentValue=0;
 
     var _arc = d3.svg.arc()
@@ -416,6 +418,7 @@ function radialProgress(parent) {
 
     _selection=d3.select(parent);
 
+    // Component to create objects for each of the 3 radials simultaneously
     function component() {
 
         _selection.each(function (data) {
@@ -511,6 +514,7 @@ function radialProgress(parent) {
         });
     }
 
+    // Tweening for interpolating and animating the arc values
     function labelTween(a) {
         var i = d3.interpolate(_currentValue, a);
         _currentValue = i(0);
@@ -542,6 +546,7 @@ function radialProgress(parent) {
         };
     }
 
+    // Dimensions and other input variable initializations
     function measure() {
         _width=_diameter - _margin.right - _margin.left - _margin.top - _margin.bottom + 30;
         _height=_width;
