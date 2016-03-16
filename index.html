@@ -2,7 +2,6 @@
 <meta charset="utf-8">
 <link rel="shortcut icon" id="logo" href="css/images/logo.png" style="height: auto;width: auto">
 <link rel="stylesheet" href="css/styles.css">
-<link rel="stylesheet" href="css/chosen.min.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet" href="css/ui.slider.extras.css">
 <link rel="stylesheet" href="css/jquery-ui-1.7.1.custom.css">
@@ -12,28 +11,44 @@
 </head>
 <body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-<script src="scripts/chosen.jquery.min.js"></script>
 <script src="scripts/d3.min.js"></script>
 <script src="scripts/underscore-min.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script src="scripts/selectToUISlider.jQuery.js"></script>
 <script src="scripts/jquery.tipsy.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script>
+
 
 <p style="margin-left:-8px; width: 1000px; text-align: left; font-size: 14px;">&nbsp; &nbsp; <b>Optimum Lighting Decisions : </b> Simplifying smart decision making to light up houses</p>
     <b><p style=" margin-left:10px; height: 10px" id="roomselected"></p><b>
 
 
-<div id="container" style="float: left; height: 750px; width: 400px; margin-left: 10px; font-weight: normal; background: #f9fef1; margin-right: 10px; text-align: justify;">
+<div id="container" style="float: left; height: 900px; width: 400px; margin-left: 10px; font-weight: normal; background: #f9fef1; margin-right: 10px; text-align: justify;">
 <div style="margin: 10px;">
-<p style="font-size: 15px;  font-family: sans-serif;">FINDING WHAT'S RIGHT FOR YOU</p>
-<br>
-Arriving at the best decision to light a room is sometimes a tricky one and we intend to simplify the complex calculations that happen in the background to help you make up your mind.  
-<br><br>
-Measuring Light Output - Lumen Methodology of Lighting Design:<br>
-A lumen is a measurement of light, just like watts, which measure the power consumed by the bulb. The brightness of every bulb varies and the amount can be quantified by the lumens value.    
+<p style="font-size: 15px;">Striking the best combination</p>
+<p>
+    Arriving at the best decision to light a room is sometimes a tricky one (given the complex calculations that we have no clue about); we intend to simplify the process and convey the message with intuitive visual messages. These complex calculations to derive the number of bulbs required to optimally light a given setting involves more complex terminology and jargon: read the description below to  understand the logic of the adjacent visualizations.  
+</p>
+
+<p>
+    Measuring Light Output <br>Lumen Methodology of Lighting Design:<br><br>
+    A lumen is a measurement of light, just like watts, which measure the power consumed by the bulb. The brightness of every bulb varies and the amount can be quantified by the lumens value. The higher the lumen rating, the greater the light output.  
+    Every room has a different requirement of lighting to perform the tasks at hand. For example, the kitchen needs the highest lumens to be perfect for the tasks. <br><br>
+    <p style="font-size: 15px;">What's the best for you?</p>
+    As you have learnt from the bulb camparision in the previous visualization, every bulb has its own features and in here we try to leverage the best propositions that each one brings to the table. For instance, purchasing an incandescent bulb might be cheaper upfront, but the cost of operating is high with poor lifespan causing you to change it faster. <br><br>
+    <p style="font-size: 15px;">User Preferences</p>
+    In our solution, we simplify the decision making by giving you 4 options: 
+    <ol>
+        <li>Low Power Consumption (KWH)</li>
+        <li>Low Cost (Cost of purchasing + operating costs in a year) </li>
+        <li>Eco Friendly (Least emissions)</li>
+        <li>Custom Setting</li>
+    </ol>
+    
+    Note: The cost is calculated based on the national average $0.12 per KWH of electricity via. <a href="#" onclick="window.open('https://www.eia.gov/electricity/monthly/update/end_use.cfm','_blank')">US Energy Information Administration as of December 2015</a>.<br><br>
+    After selecting your preferred choice, we generate the visualizations for easy comparision based on the room selected (the default values in the text box are the national averages for that room -- which can be modified), the power of the bulbs in Watts can be changed using the slider and also the bulbs can be manually selected to see the results dynamically. Also, the power of the bulb can be changed to suit the match closest to the number of fixtures available in your home. 
+
+</p>  
 
     </div>
        
@@ -122,7 +137,7 @@ A lumen is a measurement of light, just like watts, which measure the power cons
             <label style="opacity: 0.6;">Number of Bulbs</label><br><br><div id="div1" style="height: 160px;"></div>
             <label style="opacity: 0.6;">Cost to Purchase Bulbs<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(Avg $)</label><br><br><div id="div2" style="height: 160px;"></div>
             <label style="opacity: 0.6;">Approx Operating <br>Cost per Year ($)</label><br><br><div id="div3" style="height: 160px;"></div>
-            <br><label id = "lifespan" style="font-size: 40px; opacity: 0.6; margin: 20px;">1,000</label><br><br><label id="BT" style="opacity: 0.6; margin-top: 10px">Average lifespan per bulb<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (hours)</label>
+            <br><label id = "lifespan" style="font-size: 35px; opacity: 0.6; margin: 20px;">1,000</label><br><br><label id="BT" style="opacity: 0.6; margin-top: 10px">Average lifespan per bulb<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (hours)</label>
         </div>
         </div>
     </div>

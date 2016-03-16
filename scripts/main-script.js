@@ -12,6 +12,7 @@ var e=150;
 var len, brd, bulb;
 var c=1.2, b, y;
 var hou = 1.2;
+var default_hours = "1,000";
 
 var url = 'url(css/images/bedroom.png)';
 $('#selected_room').css('background-image', url);
@@ -122,30 +123,33 @@ $( ".bulb" ).change(function()
         eff=15;
         pwr=60;
         c=1.2;
+        default_hours = "1,000";
         calculate(); 
         $( "#slider1" ).slider("destroy");
         initiate_slider(60,120,20,60," Watts");
-        $("#lifespan").text("1,000");
+        // $("#lifespan").text("1,000");
 
     }
     if (bulb == 'CFL') {
         eff=60;
         pwr=10;
         c=3;
+        default_hours = "8,000";
         calculate(); 
         $( "#slider1" ).slider("destroy");
         initiate_slider(14,42,4,14," CFL Watts");
-        $("#lifespan").text("8,000");
+        // $("#lifespan").text("8,000");
         
     }
     if (bulb == 'LED') {
         eff=90;
         pwr=5;
         c=8; 
+        default_hours = "25,000";
         calculate(); 
         $( "#slider1" ).slider("destroy");
         initiate_slider(5,40,5,5," LED Watts");
-        $("#lifespan").text("25,000");
+        // $("#lifespan").text("25,000");
     }
     
 });
@@ -158,6 +162,7 @@ $( ".pref" ).change(function()
         eff=90;
         pwr=5;
         c=8;
+        default_hours = "25,000";
         document.getElementById('led_r').checked = true;
         $( "#slider1" ).slider("destroy");
         initiate_slider(5,40,5,5," LED Watts");
@@ -167,16 +172,18 @@ $( ".pref" ).change(function()
         eff=90;
         pwr=25;
         c=8;
+        default_hours = "25,000";
         document.getElementById('led_r').checked = true;
         $( "#slider1" ).slider("destroy");
         initiate_slider(5,40,5,25," LED Watts");
         calculate();
     }
     if (preference == "Eco Friendly") {
-        $("input[name='bulb']:checked").val("LED");
+        // $("input[name='bulb']:checked").val("LED");
         eff=90;
         pwr=45;
         c=8;
+        default_hours = "25,000";
         document.getElementById('led_r').checked = true;
         $( "#slider1" ).slider("destroy");
         initiate_slider(5,40,5,45," LED Watts");
@@ -187,6 +194,7 @@ $( ".pref" ).change(function()
         eff=15;//default is tungsten
         c=1.2;
         calculate();
+        default_hours = "1,000";
         $( "#slider1" ).slider("destroy");
         initiate_slider(60,120,20,60," Watts");
         document.getElementById('inc_r').checked = true;
@@ -195,7 +203,6 @@ $( ".pref" ).change(function()
 
 
 $('input').on('change', function() {
-
     
     bulb=$("input[name='bulb']:checked").val();
     bulb_type = $("input[type='radio'][name='bulb']:checked").val();
@@ -227,7 +234,7 @@ calculate();
 
 function calculate()
 {
-    console.log("Sending to calc",pwr,eff);
+    $('#lifespan').text(default_hours);
     var area=len*brd;
     n=Math.ceil((e*area)/(pwr*eff*0.5*0.8));
     if (n % 2 == 1 & n != 3 & n != 1)
