@@ -1,8 +1,8 @@
 body {
   font: 13px tahoma;
   color: #7f8c8d;
+  font-weight: normal;
 }
-
 
 
 
@@ -82,25 +82,31 @@ label.custom1 > input:checked + #custom_p {
     opacity: 1.0;
 
 }
-
-
+/*
+.ledg,  .incg, .cflg {
+    opacity: 0.2;
+}
+*/
 label.ledg1 > input:checked + img{
     content: url('images/led.png');
+     opacity: 1.0;
 
 }
 
 label.incg1 > input:checked + img{
     content: url('images/inc.png');
+     opacity: 1.0;
 
 }
 
 label.cflg1 > input:checked + img{
     content: url('images/cfl.png');
+     opacity: 1.0;
 
 }
 
 
-#dining:hover{
+/*#dining:hover{
     background-image: url(images/dining.png);
 }
 
@@ -123,7 +129,7 @@ label.cflg1 > input:checked + img{
 .incg1 {
     font: normal 14px Arial, Helvetica, sans-serif;
 }
-
+*/
 .axis path,
 .axis line {
     fill: none;
@@ -188,49 +194,90 @@ label.cflg1 > input:checked + img{
   margin: 20px;
 }
 
+#test .arc2 {
+    stroke-weight:0.1;
+    fill: #3660b0;
+}
 
-.onoffswitch {
-    position: relative; width: 140px;
-    -webkit-user-select:text; -moz-user-select:text; -ms-user-select: text;
+#outer {
+    background:#FFFFFF;
+    border-radius: 5px;
+    color: #000;
 }
-.onoffswitch-checkbox {
-    display: none;
-}
-.onoffswitch-label {
-    display: block; overflow: hidden; cursor: pointer;
-    border: 2px solid #999999; border-radius: 20px;
-}
-.onoffswitch-inner {
-    display: block; width: 200%; margin-left: -100%;
-    transition: margin 0.3s ease-in 0s;
-}
-.onoffswitch-inner:before, .onoffswitch-inner:after {
-    display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
-    font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+
+#div1, #div2, #div3{
+    width: 33%;
+    height: 200px;
     box-sizing: border-box;
+    
 }
-.onoffswitch-inner:before {
-    content: "New House";
-    padding-left: 10px;
-    background-color: #F5D76E; color: #FFFFFF;
+
+#div2 .arc {
+    stroke-weight: 0.1;
+    fill: #f0a417;
 }
-.onoffswitch-inner:after {
-    content: "Existing Setup";
-    padding-right: 10px;
-    background-color: #EEEEEE; color: #999999;
-    text-align: right;
+
+#div2 .arc2 {
+    stroke-weight: 0.1;
+    fill: #b00d08;
 }
-.onoffswitch-switch {
-    display: block; width: 18px; margin: 6px;
+
+#div3 .arc {
+    stroke-weight: 0.1;
+    fill: #1d871b;
+}
+
+
+.selectedRadial {
+    border-radius: 3px;
+    background: #f4f4f4;
+    color: #000;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+    -moz-box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+    border: 1px solid rgba(200,200,200,0.85);
+}
+
+.radial {
+    border-radius: 3px;
     background: #FFFFFF;
-    position: absolute; top: 0; bottom: 0;
-    right: 105px;
-    border: 2px solid #999999; border-radius: 20px;
-    transition: all 0.3s ease-in 0s; 
+    color: #000;
+
 }
-.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
-    margin-left: 0;
+
+
+.background {
+    fill: #FFFFFF;
+    fill-opacity: 0.01;
 }
-.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
-    right: 0px; 
+
+.component {
+    fill: #e1e1e1;
+}
+
+.component .label {
+    font-family: Myriad, "Helvetic Neue", Helvetica, Arial;
+    text-anchor: middle;
+    fill: #446CB3;
+}
+
+.arc {
+    stroke-weight:0.1;
+    fill: #4e8fff;
+}
+
+
+.arc2 {
+    stroke-weight:0.1;
+    fill: #3660b0;
+}
+
+
+.label {
+    font-family:  Myriad, "Helvetic Neue", Helvetica, Arial;
+    text-anchor: middle;
+}
+
+.radial-svg {
+    display: block;
+    margin: 0 auto;
 }

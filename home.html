@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/graphcss.css">
+</head>
+<body>
+
+
+<div id='container'>
+    <div id='sections'>
+        <div>
+            <h3>dummy1</h3>
+            <br>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            <br>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+            <br>when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+            <br>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+            <br>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+            <br>and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </div>
+        <div>
+            <h3>dummy2</h3>
+            <br>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            <br>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+            <br>when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+            <br>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+            <br>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+            <br>and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </div>
+        <div>
+            <h3>dummy3</h3>
+            <br>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            <br>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+            <br>when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+            <br>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+            <br>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+            <br>and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+</div>
+<div id='graph'></div>
+
+
+<!--<div id='container2'>-->
+    <!--<div id='sections2'>-->
+        <!--<div>-->
+            <!--<h3>dummy2</h3>-->
+            <!--<br>Lorem Ipsum is simply dummy text of the printing and typesetting industry.-->
+            <!--<br>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,-->
+            <!--<br>when an unknown printer took a galley of type and scrambled it to make a type specimen book.-->
+            <!--<br>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.-->
+            <!--<br>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,-->
+            <!--<br>and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.-->
+        <!--</div>-->
+        <!--<div>-->
+            <!--<h3>dummy2</h3>-->
+            <!--<br>Lorem Ipsum is simply dummy text of the printing and typesetting industry.-->
+            <!--<br>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,-->
+            <!--<br>when an unknown printer took a galley of type and scrambled it to make a type specimen book.-->
+            <!--<br>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.-->
+            <!--<br>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,-->
+            <!--<br>and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.-->
+        <!--</div>-->
+        <!--<div>-->
+            <!--<h3>dummy2</h3>-->
+            <!--<br>Lorem Ipsum is simply dummy text of the printing and typesetting industry.-->
+            <!--<br>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,-->
+            <!--<br>when an unknown printer took a galley of type and scrambled it to make a type specimen book.-->
+            <!--<br>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.-->
+            <!--<br>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,-->
+            <!--<br>and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<!--<div id='graph2'></div>-->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js"></script>
+<script src="scripts/graph_scroll.js"></script>
+<script>
+
+    var margin = {top: 20, right: 10, bottom: 20, left: 10};
+    // var data = [4, 8, 15, 16, 23, 42];
+    // var data2 = [3, 20, 19, 18, 28, 50];
+    // var data3 = [4, 8, 15, 16, 23, 42];
+
+    var data = d3.csv("electricity_data.csv", function(data){
+    var margin = {top: 20, right: 10, bottom: 20, left: 10};  
+    var k=0;
+    var p=0;
+    var barHeight = 20;
+    var width = 500 - margin.left - margin.right ,
+        height = 450 - margin.top - margin.bottom;
+   
+    var x = d3.scale.linear()
+    .range([0, width]);
+
+    x.domain([0, d3.max(data, function(d) { return d.value; })]);
+
+    var svg = d3.select('#graph')
+        .append('svg')
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom);
+
+    var bar = svg.selectAll('rect')
+            .data(data)
+            .enter()
+            .append('rect')
+            .attr("x", 0)
+            .attr("y", 0)
+            .attr("height", function(d,k){return x(d.value[k]);})
+            .attr("width", 50);
+
+    bar.append("text")
+      .attr("x", function(d) { return x(d.value*100) - 3; })
+      .attr("y", barHeight / 2)
+      .attr("dy", ".35em")
+      .text(function(d) { return d.name; });
+
+
+    var colors = ['orange', 'purple', 'steelblue', 'black'];
+
+    var gs = graphScroll()
+        .container(d3.select('#container'))
+        .graph(d3.selectAll('#graph'))
+        .sections(d3.selectAll('#sections > div'))
+        .on('active', function(i){
+
+
+                var p=0;
+                var s=0;
+
+//                var pos = [{x:function(d,k){return k*(width/data.length);}, y: function(d,k){return height-(data[k])*10;}},
+//                    {x: 140,y:40},
+//                    {x: 280,y:40}][i]
+
+                var pos = [{x:function(d,k){return k*(width/d.value.length);}, y: function(d,k){return (d.value[k])*10;}},
+                    {x:function(d,k){return k*(width/d.value.length);}, y: function(d,k){return (d.value[k])*10;}},
+                    {x:function(d,k){return k*(width/d.value.length);}, y: function(d,k){return height-(d.value[k])*10;}}
+                    ][i]
+
+            bar.transition().duration(1000)
+                    .attr(pos)
+                    .transition()
+                    .style('fill', colors[i])
+
+            console.log("W :"+width, "H :"+height);
+                console.log(i);
+        })
+
+});
+
+
+//    var svg2 = d3.select('#graph2')
+//            .append('svg')
+//            .attr({width: width, height: height});
+//
+//    var path = svg2.append('path');
+//
+//    var gs2 = graphScroll()
+//            .container(d3.select('#container2'))
+//            .graph(d3.selectAll('#graph2'))
+//            .sections(d3.selectAll('#sections2 > div'))
+//            .on('active', function(i){
+//                console.log(i);
+//            })
+//
+//    var bar= svg2.data(data).enter().append("div").style("width", function(d) { return d * 10 + "px"; });
+
+
+
+</script>
+
+</body>
+</html>
