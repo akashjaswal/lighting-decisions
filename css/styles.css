@@ -105,11 +105,6 @@ label.cflg1 > input:checked + img{
 
 }
 
-
-/*#dining:hover{
-    background-image: url(images/dining.png);
-}
-
 #incg:hover {
     content: url('images/inc.png');
 }
@@ -122,14 +117,6 @@ label.cflg1 > input:checked + img{
     content: url('images/led.png');
 }
 
-#ledg:checked + img{
-    background-image: url("images/led.png");
-}
-
-.incg1 {
-    font: normal 14px Arial, Helvetica, sans-serif;
-}
-*/
 .axis path,
 .axis line {
     fill: none;

@@ -21,7 +21,7 @@ $("#breadth").val(3.2);
 
 $("#roomtype").on('change', function() {
 
-    d3.selectAll("svg").remove();
+    d3.selectAll("svg.mysvg").remove();
     r = $("#roomtype").val();
     if (r === "bed") {
         var url = 'url(css/images/bedroom.png)';
@@ -233,6 +233,7 @@ calculate();
 
 function calculate()
 {
+    createBubble();
     $('#lifespan').text(default_hours);
     var area=len*brd;
     n=Math.ceil((e*area)/(pwr*eff*0.5*0.8));
@@ -245,11 +246,12 @@ function calculate()
     y = ((b*pwr)*(hou*0.12*365))/1000.0;
     y = parseFloat(parseFloat(y).toFixed(1));
     no_of_bulbs[0] = n;
-    
-    d3.selectAll("svg").remove();
-    svg = d3.select("#selected_room").selectAll("svg")
+
+    d3.selectAll("svg.mysvg").remove();
+    svg = d3.select("#selected_room").selectAll("svg.mysvg")
         .data(no_of_bulbs)
         .enter().append("svg")
+        .attr("class","mysvg")
         .attr("width", width)
         .attr("height", height);
 
@@ -259,9 +261,10 @@ function calculate()
           d3.select(this).call(bulb_placement, primeFactors(d), width / 2);
         });
 
-        svg = d3.select("#selected_room").selectAll("svg")
+        svg = d3.select("#selected_room").selectAll("svg.mysvg")
         .data(no_of_bulbs)
         .enter().append("svg")
+            .attr("class","mysvg")
         .attr("width", width)
         .attr("height", height);
 
@@ -361,7 +364,7 @@ function draw(b,cost,y){
                 .diameter(100)
                 .value(b)
                 .minValue(1)
-                .maxValue(10)
+                .maxValue(9)
                 .render();
 
         var rp2 = radialProgress(document.getElementById('div2'))
@@ -379,7 +382,7 @@ function draw(b,cost,y){
                 .diameter(100)
                 .value(y)
                 .minValue(1)
-                .maxValue(40)
+                .maxValue(30)
                 .render();
 }
 
@@ -424,7 +427,7 @@ function radialProgress(parent) {
         _selection.each(function (data) {
 
             // Select the svg element, if it exists.
-            var svg = d3.select(this).selectAll("svg").data([data]);
+            var svg = d3.select(this).selectAll("svg").attr("class","mysvg").data([data]);
 
             var enter = svg.enter().append("svg").attr("class","radial-svg").append("g");
 
